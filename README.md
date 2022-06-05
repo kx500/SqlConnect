@@ -1,4 +1,4 @@
-1、Install the Mysql Connect plugin
+1、Install the SqlConnect plugin
 
 https://www.unrealengine.com/marketplace/zh-CN/product/d1e931c9fb2a459ea2f33a12823e830a
 
@@ -11,7 +11,7 @@ https://www.unrealengine.com/marketplace/zh-CN/product/d1e931c9fb2a459ea2f33a128
 
 Features:
 
-Support local MYSQL server and cloud database connection (eg: Azure Database for MySQL)
+Support local SQL server and cloud database connection (eg: Azure Database for SQL)
 
 
 Support C++ or pure blueprint calls
@@ -20,37 +20,34 @@ Support C++ or pure blueprint calls
 Synchronous and asynchronous support
 
 
-Support MYSQL 5.x.x - 8.x.x series
-
-
 used in C++
 
 
-	Mysql = UMysqlConnectSubsystem::Get();
+	sql = USqlConnectSubsystem::Get();
  
-	Results = NewObject<UMysqlResult>();
+	Results = NewObject<USqlResult>();
 
 	/////////////////////////// synchronous connection example ///////////////////////////////
 
-	Mysql->Connect("127.0.0.1", 3306, "username", "pw", "TableName", Results);
+	sql->Connect("127.0.0.1", 3306, "username", "pw", "TableName", Results);
 	if (!Results->IsSucceed)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("MYSQL: ConnectError: %s"), *Results->Msg);
+		UE_LOG(LogTemp, Warning, TEXT("SQL: ConnectError: %s"), *Results->Msg);
 		return;
 	}
 
 	//Get the total number of rows
-	Mysql->Query("SELECT count(1) FROM `testtable`", Results);
-	UE_LOG(LogTemp, Warning, TEXT("MYSQL: Count: IsSucceed = %d, msg = %s, count = %d"), Results->IsSucceed, *Results->Msg, Results->getCount());
+	sql->Query("SELECT count(1) FROM `testtable`", Results);
+	UE_LOG(LogTemp, Warning, TEXT("SQL: Count: IsSucceed = %d, msg = %s, count = %d"), Results->IsSucceed, *Results->Msg, Results->getCount());
 
 	//get row
-	Mysql->Query("SELECT * FROM `testtable`", Results);
-	UE_LOG(LogTemp, Warning, TEXT("MYSQL: rows: IsSucceed = %d, msg = %s, Num = %d"), Results->IsSucceed, *Results->Msg, Results->getRows().Num());
+	sql->Query("SELECT * FROM `testtable`", Results);
+	UE_LOG(LogTemp, Warning, TEXT("SQL: rows: IsSucceed = %d, msg = %s, Num = %d"), Results->IsSucceed, *Results->Msg, Results->getRows().Num());
 
 
 /////////////////////////// Asynchronous connection example ///////////////////////////////
 
-	Mysql = UMysqlConnectSubsystem::Get();
+	sql = USqlConnectSubsystem::Get();
  
 	Results = NewObject<USqlResult>();
 	
