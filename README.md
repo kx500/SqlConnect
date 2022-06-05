@@ -1,6 +1,6 @@
 1、Install the Mysql Connect plugin
 
-https://www.unrealengine.com/marketplace/zh-CN/product/c15f4e325ba04d5698395414af94644f
+https://www.unrealengine.com/marketplace/zh-CN/product/d1e931c9fb2a459ea2f33a12823e830a
 
 2、Use plugins
 
